@@ -9,12 +9,12 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
 
 public class SplashScreen extends AppCompatActivity {
     SharedPreferences sharedPreferences;
-//    SharedPreferences.Editor editor;
+
+    //    SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

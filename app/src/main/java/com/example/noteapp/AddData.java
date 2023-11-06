@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -34,19 +35,44 @@ public class AddData extends AppCompatActivity {
 //        dbHelper
         currentTime = Calendar.getInstance().getTime();
         StatusBar();
+        activityAddDataBinding.add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String t = activityAddDataBinding.editTittle.getText().toString();
+                String c = activityAddDataBinding.editContent.getText().toString();
+                if (t.isEmpty()) {
+                    Toast.makeText(AddData.this, "Tittle is empty", Toast.LENGTH_SHORT).show();
+                } else if (c.isEmpty()) {
+                    Toast.makeText(AddData.this, "Content is empty", Toast.LENGTH_SHORT).show();
+                } else {
+                    String currTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+                    viewModelClass = new ViewModelClass(getApplication());
+                    viewModelClass.insert(new RoomModel(t, c, currTime));
+                    Intent intent = new Intent(AddData.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        });
         activityAddDataBinding.save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 no++;
                 String t = activityAddDataBinding.editTittle.getText().toString();
                 String c = activityAddDataBinding.editContent.getText().toString();
-                String currTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
-//                dbHelper.getDAO().addText(new RoomModel(t, c, currTime));
-                viewModelClass = new ViewModelClass(getApplication());
-                viewModelClass.insert(new RoomModel(t, c, currTime));
-                Intent intent = new Intent(AddData.this, MainActivity.class);
-                startActivity(intent);
-                finish();
+                if (t.isEmpty()) {
+                    Toast.makeText(AddData.this, "Tittle is empty", Toast.LENGTH_SHORT).show();
+                } else if (c.isEmpty()) {
+                    Toast.makeText(AddData.this, "Content is empty", Toast.LENGTH_SHORT).show();
+                } else {
+                    String currTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+                    viewModelClass = new ViewModelClass(getApplication());
+                    viewModelClass.insert(new RoomModel(t, c, currTime));
+                    Intent intent = new Intent(AddData.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+
             }
         });
         activityAddDataBinding.back.setOnClickListener(new View.OnClickListener() {

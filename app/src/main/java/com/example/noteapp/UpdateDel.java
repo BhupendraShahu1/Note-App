@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -35,11 +36,20 @@ public class UpdateDel extends AppCompatActivity {
         activityUpdateDelBinding.update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RoomModel roomModel = new RoomModel(id, activityUpdateDelBinding.UeditTittle.getText().toString(), activityUpdateDelBinding.UeditContent.getText().toString(), time);
-                viewModelClass.updateData(roomModel);
-                Intent intent1 = new Intent(UpdateDel.this, MainActivity.class);
-                startActivity(intent1);
-                finish();
+                String getTittle = activityUpdateDelBinding.UeditTittle.getText().toString();
+                String getContent = activityUpdateDelBinding.UeditContent.getText().toString();
+                if (getTittle.isEmpty()) {
+                    Toast.makeText(UpdateDel.this, "Tittle is empty", Toast.LENGTH_SHORT).show();
+                } else if (getContent.isEmpty()) {
+                    Toast.makeText(UpdateDel.this, "Content is empty", Toast.LENGTH_SHORT).show();
+                } else {
+                    RoomModel roomModel = new RoomModel(id, getTittle, getContent, time);
+                    viewModelClass.updateData(roomModel);
+                    Intent intent1 = new Intent(UpdateDel.this, MainActivity.class);
+                    startActivity(intent1);
+                    finish();
+                }
+
             }
         });
         activityUpdateDelBinding.btnBack.setOnClickListener(new View.OnClickListener() {

@@ -43,13 +43,11 @@ public class AdopterCl extends RecyclerView.Adapter<AdopterCl.itemHolder> {
         View view = layoutInflater.inflate(R.layout.item, parent, false);
         return new itemHolder(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull AdopterCl.itemHolder holder, int position) {
         int p = position;
         RoomModel roomModel = this.arrayList.get(position);
         holder.setItem(roomModel);
-
         holder.constraintLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -103,15 +101,8 @@ public class AdopterCl extends RecyclerView.Adapter<AdopterCl.itemHolder> {
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
-//                dbHelper = DBHelper.getDatabase(context);
-//                sendData.send(pos);
-////                viewModelClass.delete(new RoomModel(arrayList.get(pos).getId(), arrayList.get(pos).getTittle(), arrayList.get(pos).getContent(), arrayList.get(pos).getTime()));
-////                repositoryClass = new RepositoryClass((Application) context);
-////                repositoryClass.delete(new RoomModel(arrayList.get(pos).getId(), arrayList.get(pos).getTittle(), arrayList.get(pos).getContent(), arrayList.get(pos).getTime()));
                 ViewModelClass viewModelClass = new ViewModelClass(((Activity) context).getApplication());
                 viewModelClass.delete(new RoomModel(arrayList.get(pos).getId(), arrayList.get(pos).getTittle(), arrayList.get(pos).getContent(), arrayList.get(pos).getTime()));
-//                dbHelper.getDAO().deleteText(new RoomModel(arrayList.get(pos).getId(), arrayList.get(pos).getTittle(), arrayList.get(pos).getContent(), arrayList.get(pos).getTime()));
                 arrayList.remove(pos);
                 notifyDataSetChanged();
             }

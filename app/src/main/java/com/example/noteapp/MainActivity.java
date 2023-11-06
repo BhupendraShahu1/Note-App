@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity implements AdopterCl.SendDat
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     ActivityMainBinding activityMainBinding;
-    ArrayList<RoomModel> arrayList = new ArrayList<>();
     ViewModelClass viewmodal;
 
     @Override
@@ -49,6 +48,8 @@ public class MainActivity extends AppCompatActivity implements AdopterCl.SendDat
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         activityMainBinding = DataBindingUtil.setContentView(MainActivity.this, R.layout.activity_main);
+        activityMainBinding.recycle.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+
         //MVVM implement here
 
         dbHelper = DBHelper.getDatabase(getApplication());
@@ -62,8 +63,6 @@ public class MainActivity extends AppCompatActivity implements AdopterCl.SendDat
                 adopter.notifyDataSetChanged();
             }
         });
-
-
         //MVVM implement end here
 
         SetDate();
@@ -73,7 +72,6 @@ public class MainActivity extends AppCompatActivity implements AdopterCl.SendDat
         changeMode();
         searchData();
         StatusBar();
-        activityMainBinding.recycle.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
         activityMainBinding.floatingbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +90,6 @@ public class MainActivity extends AppCompatActivity implements AdopterCl.SendDat
         Date today = calendar.getTime();
         DateFormat yearFormate = new SimpleDateFormat("yyyy");
         DateFormat dayFomate = new SimpleDateFormat("MMM");
-
         DateFormat day = new SimpleDateFormat("dd");
         String todayAsString = yearFormate.format(today);
         String yearS = dayFomate.format(today);
@@ -100,8 +97,6 @@ public class MainActivity extends AppCompatActivity implements AdopterCl.SendDat
         activityMainBinding.bhu.setText(day.format(today));
         activityMainBinding.day.setText(yearS);
         activityMainBinding.year.setText(todayAsString);
-//        activityMainBinding.day2.setText(new SimpleDateFormat("E").format(calendar.getTime()));
-
         activityMainBinding.bhu.setText(day.format(today));
         calendar.add(Calendar.DAY_OF_YEAR, 1);
         activityMainBinding.day2.setText(new SimpleDateFormat("E").format(calendar.getTime()));
@@ -181,9 +176,10 @@ public class MainActivity extends AppCompatActivity implements AdopterCl.SendDat
 
     private void changeMode() {
         sharedPreferences = getSharedPreferences("mode", MODE_PRIVATE);
-        boolean b = sharedPreferences.getBoolean("night", false);
+        boolean b = sharedPreferences.getBoolean("night", true);
         if (b) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+//            activityMainBinding.switcher.setBackgroundColor(R.color);
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }
@@ -192,6 +188,7 @@ public class MainActivity extends AppCompatActivity implements AdopterCl.SendDat
             public void onClick(View v) {
                 if (b) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+
                     editor = sharedPreferences.edit();
                     editor.putBoolean("night", false);
                 } else {
@@ -223,22 +220,30 @@ public class MainActivity extends AppCompatActivity implements AdopterCl.SendDat
 
     }
 
-    public void StatusBar() {
-        Window window = MainActivity.this.getWindow();
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(ContextCompat.getColor(MainActivity.this, com.google.android.material.R.color.material_dynamic_primary99));
-//
-    }
-
     @Override
     public void send(int p) {
         position = p;
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
+
+    public void StatusBar() {
+        Window window = MainActivity.this.getWindow();
+        View decorView = window.getDecorView();
+        int nightMode = AppCompatDelegate.getDefaultNightMode();
+        if (nightMode == AppCompatDelegate.MODE_NIGHT_NO) {
+            // Night mode is active
+            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        } else {
+            // Day mode is active
+            decorView.setSystemUiVisibility(0); // Clear any previous flags
+            window.clearFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        }
+        int statusBarColor = ContextCompat.getColor(this, AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES ? R.color.black : R.color.white);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(statusBarColor);
+        }
+
     }
 }

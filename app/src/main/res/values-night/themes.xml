@@ -13,6 +13,8 @@
         <item name="neumorph_cornerSizeTopRight">16dp</item>
         <item name="neumorph_cornerSizeBottomLeft">16dp</item>
         <item name="neumorph_cornerSizeBottomRight">16dp</item>
+        <item name="neumorph_shadowColorLight">#59000000</item>
+        <item name="neumorph_shadowColorDark">#61FFFFFF</item>
     </style>
 
     <style name="Text">
@@ -28,16 +30,30 @@
     </style>
 
     <style name="iconbg">
-        <item name="android:background">@color/white</item>
+        <item name="android:tint">@color/white</item>
     </style>
 
     <style name="searchbg">
         <item name="android:background">@drawable/bgsearch</item>
     </style>
+
     <style name="AppTheme" parent="Theme.AppCompat">
         <item name="android:background">@color/black</item>
     </style>
+
     <style name="statusBar">
         <item name="android:background">@color/black</item>
+    </style>
+
+    <style name="Text2">
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="reversBackground">
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="reversText">
+        <item name="android:textColor">@color/black</item>
     </style>
 </resources>
