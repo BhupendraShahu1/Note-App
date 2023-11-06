@@ -49,4 +49,15 @@ dependencies {
     //noinspection GradleDependency
     implementation "androidx.lifecycle:lifecycle-runtime:.0.1.1"
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    //
+    implementation "com.airbnb.android:lottie:6.1.0"
+    //
+    implementation 'androidx.room:room-runtime:2.6.0'
+    annotationProcessor 'androidx.room:room-compiler:2.6.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    //noinspection LifecycleAnnotationProcessorWithJava8
+    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.6.2'
+    //
+//    implementation 'android.arch.persistence.room:rxjava2:1.1.1'
+
 }

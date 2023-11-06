@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">NoteApp</string>
+    <string name="note_app">Note App</string>
+    <string name="tittle">Tittle</string>
+    <string name="content">Content</string>
+    <string name="save">Save</string>
+    <string name="hint_tittle">Write Tittle here...</string>
+    <string name="hint_content">Write Content here...</string>
+    <string name="search_something_here">Search something here....</string>
+    <string name="update">Update</string>
 </resources>

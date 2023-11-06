@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NoteApp</string>
+    <string name="note_app">Note App</string>
+    <string name="tittle">शीर्षक</string>
+    <string name="content">सामग्री</string>
+    <string name="save">जोड़ें</string>
+    <string name="hint_tittle">यहां शीर्षक लिखें...</string>
+    <string name="hint_content">यहां सामग्री लिखें...</string>
+    <string name="search_something_here">यहां शीर्षक खोजों....</string>
+    <string name="update">नवीनतम बनाना</string>
+</resources>
