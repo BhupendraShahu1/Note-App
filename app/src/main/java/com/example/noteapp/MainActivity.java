@@ -181,7 +181,7 @@ public class MainActivity extends AppCompatActivity implements AdopterCl.SendDat
 
     private void changeMode() {
         sharedPreferences = getSharedPreferences("mode", MODE_PRIVATE);
-        boolean b = sharedPreferences.getBoolean("night", false);
+        boolean b = sharedPreferences.getBoolean("night", true);
         if (b) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         } else {
