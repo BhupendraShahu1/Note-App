@@ -16,38 +16,34 @@ import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.noteapp.AdopterClass.AdapterClass;
+import com.example.noteapp.AdopterClass.AdapterClass2;
 import com.example.noteapp.ModelClass.RoomModel;
 import com.example.noteapp.RoomDAta.DataBaseHelper;
 import com.example.noteapp.ViewModel.ViewModelClass;
-import com.example.noteapp.databinding.ActivityMainBinding;
+import com.example.noteapp.databinding.ActivityMain2Binding;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity {
-    AdapterClass adopter;
+public class MainActivity2 extends AppCompatActivity {
+    ActivityMain2Binding main2Binding;
+    AdapterClass2 adopter;
     int position;
     DataBaseHelper dataBaseHelper;
     private static final String NIGHT_MODE_PREF = "night_mode_preference";
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    ActivityMainBinding activityMainBinding;
     ViewModelClass viewModelClass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        activityMainBinding = DataBindingUtil.setContentView(MainActivity.this, R.layout.activity_main);
-        activityMainBinding.recycle.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        setContentView(R.layout.activity_main2);
+        main2Binding = DataBindingUtil.setContentView(MainActivity2.this, R.layout.activity_main2);
+        main2Binding.recycle.setLayoutManager(new LinearLayoutManager(this));
 
         //MVVM implement here
 
@@ -56,72 +52,42 @@ public class MainActivity extends AppCompatActivity {
         viewModelClass.getAllDataInsert().observe(this, new Observer<List<RoomModel>>() {
             @Override
             public void onChanged(List<RoomModel> roomModelList) {
-
-
-                adopter = new AdapterClass((ArrayList<RoomModel>) roomModelList, MainActivity.this, dataBaseHelper);
-                activityMainBinding.recycle.setAdapter(adopter);
-//                activityMainBinding.recycle.scrollToPosition(roomModelList.size() - 1);
-                adopter.notifyDataSetChanged();
-
+                if (roomModelList.size() != 0) {
+                    main2Binding.recycle.setVisibility(View.VISIBLE);
+                    main2Binding.noDataFoundHere.setVisibility(View.GONE);
+                    adopter = new AdapterClass2((ArrayList<RoomModel>) roomModelList, MainActivity2.this, dataBaseHelper);
+                    main2Binding.recycle.setAdapter(adopter);
+//                main2Binding.recycle.scrollToPosition(roomModelList.size() - 1);
+                    adopter.notifyDataSetChanged();
+                } else {
+                    main2Binding.recycle.setVisibility(View.GONE);
+                    main2Binding.noDataFoundHere.setVisibility(View.VISIBLE);
+                }
 
             }
         });
         //MVVM implement end here
 
+
         // calling the method
-        SetDate();
         addSetting();
         sharedPreferences();
         changeMode();
         searchData();
         StatusBar();
 
-        activityMainBinding.floatingButton.setOnClickListener(new View.OnClickListener() {
+        main2Binding.floatingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AddData.class);
+                Intent intent = new Intent(MainActivity2.this, AddSecondActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
     }
 
-
-    private void SetDate() {
-
-        Calendar calendar = Calendar.getInstance();
-        Date today = calendar.getTime();
-        DateFormat yearFormate = new SimpleDateFormat("yyyy");
-        DateFormat monthFormate = new SimpleDateFormat("MMM");
-        DateFormat day = new SimpleDateFormat("dd");
-        String year = yearFormate.format(today);
-        String month = monthFormate.format(today);
-        activityMainBinding.todayDay.setText(new SimpleDateFormat("E").format(calendar.getTime()));
-        activityMainBinding.date1.setText(day.format(today));
-        activityMainBinding.textViewMonth.setText(month);
-        activityMainBinding.textsViewYear.setText(year);
-        activityMainBinding.date1.setText(day.format(today));
-        calendar.add(Calendar.DAY_OF_YEAR, 1);
-        activityMainBinding.day2.setText(new SimpleDateFormat("E").format(calendar.getTime()));
-        activityMainBinding.date2.setText(new SimpleDateFormat("dd").format(calendar.getTime()));
-        calendar.add(Calendar.DAY_OF_YEAR, 1);
-        activityMainBinding.day3.setText(new SimpleDateFormat("E").format(calendar.getTime()));
-        activityMainBinding.date3.setText(new SimpleDateFormat("dd").format(calendar.getTime()));
-        calendar.add(Calendar.DAY_OF_YEAR, 1);
-        activityMainBinding.day4.setText(new SimpleDateFormat("E").format(calendar.getTime()));
-        activityMainBinding.date4.setText(new SimpleDateFormat("dd").format(calendar.getTime()));
-        calendar.add(Calendar.DAY_OF_YEAR, 1);
-        activityMainBinding.day5.setText(new SimpleDateFormat("E").format(calendar.getTime()));
-        activityMainBinding.date5.setText(new SimpleDateFormat("dd").format(calendar.getTime()));
-        calendar.add(Calendar.DAY_OF_YEAR, 1);
-        activityMainBinding.day6.setText(new SimpleDateFormat("E").format(calendar.getTime()));
-        activityMainBinding.date6.setText(new SimpleDateFormat("dd").format(calendar.getTime()));
-        calendar.add(Calendar.DAY_OF_YEAR, 1);
-        activityMainBinding.day7.setText(new SimpleDateFormat("E").format(calendar.getTime()));
-        activityMainBinding.date7.setText(new SimpleDateFormat("dd").format(calendar.getTime()));
-    }
     private void addSetting() {
-        activityMainBinding.setting.setOnClickListener(new View.OnClickListener() {
+        main2Binding.setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 changeLanguage();
@@ -144,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                     setLocale("hi");
                     recreate();
                 } else {
-                    Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                    Intent intent = new Intent(MainActivity2.this, MainActivity.class);
                     startActivity(intent);
                     finish();
                 }
@@ -178,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }
-        activityMainBinding.switcher.setOnClickListener(new View.OnClickListener() {
+        main2Binding.switcher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (b) {
@@ -197,36 +163,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void searchData() {
-        activityMainBinding.buttonSearch.clearFocus();
-        activityMainBinding.buttonSearch.setOnClickListener(new View.OnClickListener() {
+        main2Binding.buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SearchActivityAn.class);
+                Intent intent = new Intent(MainActivity2.this, SearchActivityAn.class);
                 startActivity(intent);
             }
         });
-//      /  activityMainBinding.buttonSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                String  trimData=query.trim();
-//                ArrayList<RoomModel> models = (ArrayList<RoomModel>) dataBaseHelper.getDaoData().searchTittle(trimData);
-//                adopter = new AdapterClass(models, MainActivity.this, dataBaseHelper);
-//                activityMainBinding.recycle.setAdapter(adopter);
-//                adopter.notifyDataSetChanged();
-//                return true;
-//            }
-//
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                return false;
-//            }
-//        });
     }
 
 
     public void StatusBar() {
-        Window window = MainActivity.this.getWindow();
+        Window window = MainActivity2.this.getWindow();
         View decorView = window.getDecorView();
         int nightMode = AppCompatDelegate.getDefaultNightMode();
         if (nightMode == AppCompatDelegate.MODE_NIGHT_NO) {
@@ -243,10 +191,5 @@ public class MainActivity extends AppCompatActivity {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(statusBarColor);
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
     }
 }

@@ -3,13 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <LinearLayout
         style="@style/parent_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".AddData">
+        tools:context=".UpdateDel">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBar"
@@ -29,11 +28,11 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:id="@+id/back"
+                        android:id="@+id/back_button"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginStart="10dp"
-                        android:padding="8dp"
+                        android:padding="7dp"
                         android:src="@drawable/backbtn"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -45,98 +44,52 @@
                         android:fontFamily="@font/notbad"
                         android:text="@string/note_app"
                         android:textSize="20sp"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/update_button"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <ImageView
-                        android:id="@+id/save_data"
-                        style="@style/icon_background"
+                    <TextView
+                        android:id="@+id/update_button"
+                        style="@style/Text"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="30dp"
-                        android:padding="2dp"
-                        android:src="@drawable/baseline_save_24"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:fontFamily="@font/sourcesanseprobold"
+                        android:text="@string/update"
+                        android:textSize="20dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <TextView
-            style="@style/Text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_15sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginEnd="@dimen/_15sdp"
-            android:fontFamily="@font/notbad"
-            android:text="@string/tittle"
-            android:textSize="30sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginStart="@dimen/_15sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:layout_marginEnd="@dimen/_15sdp"
-            android:background="#C8C1C1" />
 
         <EditText
-            android:id="@+id/editTittle"
+            android:id="@+id/update_tittle"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_60sdp"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="@null"
-            android:gravity="start"
+            android:fontFamily="@font/sourcesanseprobold"
             android:hint="@string/hint_tittle"
+            android:outlineProvider="none"
+            android:textSize="20sp"
+            android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tTittle" />
 
-        <TextView
-            style="@style/Text"
+        <EditText
+            android:id="@+id/update_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_15sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginEnd="@dimen/_15sdp"
-            android:fontFamily="@font/notbad"
-            android:text="@string/content"
-            android:textSize="@dimen/_30sdp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#C8C1C1"
-            android:layout_marginStart="@dimen/_15sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:layout_marginEnd="@dimen/_15sdp"
-           />
-
-        <EditText
-            android:id="@+id/editContent"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_150sdp"
             android:layout_margin="10dp"
             android:background="@null"
-            android:gravity="start"
+            android:fontFamily="@font/notsans"
             android:hint="@string/hint_content"
+            android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTittle" />
 
-        <Button
-            android:id="@+id/save"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/save"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editContent" />
     </LinearLayout>
 </layout>

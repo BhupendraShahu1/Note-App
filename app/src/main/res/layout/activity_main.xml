@@ -2,36 +2,31 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <!--<data>-->
-    <!--    <variable-->
-    <!--        name="MainItem"-->
-    <!--        type="com.example.noteapp.ModelClass.RoomModel" />-->
-    <!--</data>-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        style="@style/Backgrd"
+        style="@style/parent_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.core.widget.NestedScrollView
-            style="@style/Backgrd"
+            style="@style/parent_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <LinearLayout
-                style="@style/Backgrd"
+                style="@style/parent_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    style="@style/Backgrd"
+                    style="@style/parent_linear_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:context=".MainActivity">
 
                     <soup.neumorphism.NeumorphTextView
-                        android:id="@+id/year"
+                        android:id="@+id/texts_view_year"
                         style="@style/Text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -45,7 +40,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <soup.neumorphism.NeumorphTextView
-                        android:id="@+id/day"
+                        android:id="@+id/text_view_month"
                         style="@style/Text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -55,13 +50,13 @@
                         android:fontFamily="@font/sourcesanseprobold"
                         android:text="May"
                         android:textSize="18sp"
-                        app:layout_constraintStart_toEndOf="@+id/year"
+                        app:layout_constraintStart_toEndOf="@+id/texts_view_year"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/setting"
-                        style="@style/iconbg"
-                        android:layout_width="wrap_content"
+                        style="@style/icon_background"
+                        android:layout_width="70dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:src="@drawable/baseline_settings_24"
@@ -70,33 +65,49 @@
 
                     <com.google.android.material.switchmaterial.SwitchMaterial
                         android:id="@+id/switcher"
-                        android:layout_width="70dp"
-                        android:layout_height="40dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginEnd="30dp"
-                        android:theme="@style/iconbg"
+                        android:theme="@style/icon_background"
                         app:layout_constraintEnd_toStartOf="@+id/setting"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <androidx.appcompat.widget.SearchView
-                        android:id="@+id/btnSearch"
-                        style="@style/searchbg"
-                        android:layout_width="match_parent"
+                    <ImageView
+                        android:id="@+id/button_search"
+                        style="@style/icon_background"
+                        android:layout_width="70dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
+                        android:padding="5dp"
                         android:layout_marginBottom="10dp"
-                        android:focusable="false"
-                        android:queryBackground="@null"
-                        app:iconifiedByDefault="false"
-                        app:layout_constraintBottom_toTopOf="@+id/horizentalScroll"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/day"
+                        android:src="@drawable/baseline_search_24"
+                        app:layout_constraintEnd_toStartOf="@+id/switcher"
+                        app:layout_constraintTop_toTopOf="parent"
                         app:queryHint="@string/search_something_here" />
+                    />
+
+                    <!--                    <androidx.appcompat.widget.SearchView-->
+                    <!--                        android:id="@+id/button_search"-->
+                    <!--                        style="@style/search_background"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_marginStart="15dp"-->
+                    <!--                        android:layout_marginTop="10dp"-->
+                    <!--                        android:layout_marginEnd="15dp"-->
+                    <!--                        android:layout_marginBottom="10dp"-->
+                    <!--                        android:focusable="false"-->
+                    <!--                        android:queryBackground="@null"-->
+                    <!--                        app:iconifiedByDefault="false"-->
+                    <!--                        app:layout_constraintBottom_toTopOf="@+id/horizontalScroll"-->
+                    <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+                    <!--                        app:layout_constraintStart_toStartOf="parent"-->
+                    <!--                        app:layout_constraintTop_toBottomOf="@+id/text_view_month"-->
+                    <!--                        app:queryHint="@string/search_something_here" />-->
 
                     <HorizontalScrollView
-                        android:id="@+id/horizentalScroll"
+                        android:id="@+id/horizontalScroll"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
@@ -107,7 +118,7 @@
                         android:scrollbars="none"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/btnSearch">
+                        app:layout_constraintTop_toBottomOf="@+id/button_search">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -143,7 +154,7 @@
                                         app:neumorph_shadowColorLight="@color/black" />
 
                                     <TextView
-                                        android:id="@+id/bhu"
+                                        android:id="@+id/date1"
                                         android:layout_width="60dp"
                                         android:layout_height="0dp"
                                         android:layout_weight="1"
@@ -414,15 +425,16 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycle"
-                    style="@style/Backgrd"
+                    style="@style/parent_linear_layout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
+
+
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 
-
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingbtn"
+            android:id="@+id/floating_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"

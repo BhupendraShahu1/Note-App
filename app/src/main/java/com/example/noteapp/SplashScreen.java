@@ -25,20 +25,10 @@ public class SplashScreen extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(ContextCompat.getColor(SplashScreen.this, com.google.android.material.R.color.material_dynamic_primary99));
         setContentView(R.layout.activity_splash_screen);
-//        sharedPreferences = getSharedPreferences("mode", MODE_PRIVATE);
-//        boolean b = sharedPreferences.getBoolean("night", false);
-//        if (b) {
-//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-//        } else {
-//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-//        }
-        // on below line we are calling handler to run a task
-        // for specific time interval
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(SplashScreen.this, MainActivity.class);
+                Intent i = new Intent(SplashScreen.this, MainActivity2.class);
                 startActivity(i);
                 finish();
             }

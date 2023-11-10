@@ -16,42 +16,40 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.noteapp.ModelClass.RoomModel;
 import com.example.noteapp.R;
-import com.example.noteapp.RoomDAta.DBHelper;
+import com.example.noteapp.RoomDAta.DataBaseHelper;
 import com.example.noteapp.UpdateDel;
 import com.example.noteapp.ViewModel.ViewModelClass;
 
 import java.util.ArrayList;
 
-import soup.neumorphism.NeumorphCardView;
-
-public class AdopterCl extends RecyclerView.Adapter<AdopterCl.itemHolder> {
+public class AdapterClass extends RecyclerView.Adapter<AdapterClass.itemHolder> {
     ArrayList<RoomModel> arrayList = new ArrayList<>();
     Context context;
-    DBHelper dbHelper;
-    SendData sendData;
+    DataBaseHelper dataBaseHelper;
 
-    public AdopterCl(ArrayList<RoomModel> arrayList, Context context, DBHelper dbHelper) {
+
+    public AdapterClass(ArrayList<RoomModel> arrayList, Context context, DataBaseHelper dbHelper) {
         this.arrayList = arrayList;
         this.context = context;
-        this.dbHelper = dbHelper;
+        this.dataBaseHelper = dbHelper;
     }
-
     @NonNull
     @Override
-    public AdopterCl.itemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterClass.itemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.item, parent, false);
         return new itemHolder(view);
     }
+
     @Override
-    public void onBindViewHolder(@NonNull AdopterCl.itemHolder holder, int position) {
-        int p = position;
+    public void onBindViewHolder(@NonNull AdapterClass.itemHolder holder, int position) {
+        int position1 = position;
         RoomModel roomModel = this.arrayList.get(position);
         holder.setItem(roomModel);
         holder.constraintLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                deleteItem(p);
+                deleteItem(position1);
                 return true;
             }
         });
@@ -59,10 +57,10 @@ public class AdopterCl extends RecyclerView.Adapter<AdopterCl.itemHolder> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, UpdateDel.class);
-                intent.putExtra("n", arrayList.get(p).getTittle());
-                intent.putExtra("c", arrayList.get(p).getContent());
-                intent.putExtra("t", arrayList.get(p).getTime());
-                intent.putExtra("id", arrayList.get(p).getId());
+                intent.putExtra("n", arrayList.get(position1).getTittle());
+                intent.putExtra("c", arrayList.get(position1).getContent());
+                intent.putExtra("t", arrayList.get(position1).getTime());
+                intent.putExtra("id", arrayList.get(position1).getId());
                 context.startActivity(intent);
             }
         });
@@ -74,27 +72,27 @@ public class AdopterCl extends RecyclerView.Adapter<AdopterCl.itemHolder> {
     }
 
     public class itemHolder extends RecyclerView.ViewHolder {
-        TextView name, about, time;
-        NeumorphCardView cardView;
+        TextView tittle, Content, time;
         ConstraintLayout constraintLayout;
 
         public itemHolder(@NonNull View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.itemName);
-            about = itemView.findViewById(R.id.itemAbout);
-            time = itemView.findViewById(R.id.itemTime);
-            constraintLayout = itemView.findViewById(R.id.cont);
+            tittle = itemView.findViewById(R.id.item_tittle);
+            Content = itemView.findViewById(R.id.item_content);
+            time = itemView.findViewById(R.id.item_time);
+            constraintLayout = itemView.findViewById(R.id.item_constraint_layout);
+
         }
 
         public void setItem(RoomModel roomModel) {
-            name.setText(roomModel.getTittle());
-            about.setText(roomModel.getContent());
+            tittle.setText(roomModel.getTittle());
+            Content.setText(roomModel.getContent());
             time.setText(roomModel.getTime());
 
         }
     }
 
-    public void deleteItem(int pos) {
+    public void deleteItem(int itemPosition) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Delete");
         builder.setMessage("are you want to delete");
@@ -102,8 +100,8 @@ public class AdopterCl extends RecyclerView.Adapter<AdopterCl.itemHolder> {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 ViewModelClass viewModelClass = new ViewModelClass(((Activity) context).getApplication());
-                viewModelClass.delete(new RoomModel(arrayList.get(pos).getId(), arrayList.get(pos).getTittle(), arrayList.get(pos).getContent(), arrayList.get(pos).getTime()));
-                arrayList.remove(pos);
+                viewModelClass.delete(new RoomModel(arrayList.get(itemPosition).getId(), arrayList.get(itemPosition).getTittle(), arrayList.get(itemPosition).getContent(), arrayList.get(itemPosition).getTime()));
+                arrayList.remove(itemPosition);
                 notifyDataSetChanged();
             }
         });
@@ -114,9 +112,5 @@ public class AdopterCl extends RecyclerView.Adapter<AdopterCl.itemHolder> {
             }
         });
         AlertDialog alertDialog = builder.show();
-    }
-
-    public interface SendData {
-        public void send(int p);
     }
 }

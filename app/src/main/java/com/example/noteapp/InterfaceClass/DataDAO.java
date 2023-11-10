@@ -1,4 +1,4 @@
-package com.example.noteapp.InterfaceCl;
+package com.example.noteapp.InterfaceClass;
 
 //import android.arch.persistence.room.Dao;
 
@@ -29,8 +29,4 @@ public interface DataDAO {
 
     @Delete
     void deleteText(RoomModel roomModel);
-
-    @Query("select * from data_Table")
-    LiveData<List<RoomModel>> getLiveData();
-
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
-        style="@style/Backgrd"
+        style="@style/parent_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -12,7 +12,7 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBar"
-            style="@style/Backgrd"
+            style="@style/parent_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +28,7 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:id="@+id/btnBack"
+                        android:id="@+id/back_button"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginStart="10dp"
@@ -44,12 +44,12 @@
                         android:fontFamily="@font/notbad"
                         android:text="@string/note_app"
                         android:textSize="20sp"
-                        app:layout_constraintEnd_toStartOf="@+id/update"
+                        app:layout_constraintEnd_toStartOf="@+id/update_button"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/update"
+                        android:id="@+id/update_button"
                         style="@style/Text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
             android:textSize="25sp" />
 
         <EditText
-            android:id="@+id/UeditTittle"
+            android:id="@+id/update_tittle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -98,7 +98,7 @@
             android:textSize="23sp" />
 
         <EditText
-            android:id="@+id/UeditContent"
+            android:id="@+id/update_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"

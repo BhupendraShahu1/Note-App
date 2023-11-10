@@ -14,16 +14,15 @@ import androidx.databinding.DataBindingUtil;
 
 import com.example.noteapp.ModelClass.RoomModel;
 import com.example.noteapp.ViewModel.ViewModelClass;
-import com.example.noteapp.databinding.ActivityUpdateDelBinding;
+import com.example.noteapp.databinding.ActivityUpdate2Binding;
 
-public class UpdateDel extends AppCompatActivity {
-    ActivityUpdateDelBinding activityUpdateDelBinding;
+public class Update2 extends AppCompatActivity {
+    ActivityUpdate2Binding activityUpdateDelBinding;
     ViewModelClass viewModelClass;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activityUpdateDelBinding = DataBindingUtil.setContentView(UpdateDel.this, R.layout.activity_update_del);
+        activityUpdateDelBinding = DataBindingUtil.setContentView(Update2.this, R.layout.activity_update2);
         viewModelClass = new ViewModelClass(getApplication());
         StatusBar();
         Intent intent = getIntent();
@@ -40,13 +39,13 @@ public class UpdateDel extends AppCompatActivity {
                 String tittleTrim = getTittle.trim();
                 String getContent = activityUpdateDelBinding.updateContent.getText().toString();
                 if (getTittle.isEmpty()) {
-                    Toast.makeText(UpdateDel.this, "Tittle is empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Update2.this, "Tittle is empty", Toast.LENGTH_SHORT).show();
                 } else if (getContent.isEmpty()) {
-                    Toast.makeText(UpdateDel.this, "Content is empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Update2.this, "Content is empty", Toast.LENGTH_SHORT).show();
                 } else {
                     RoomModel roomModel = new RoomModel(id, tittleTrim, getContent, time);
                     viewModelClass.updateData(roomModel);
-                    Intent intent1 = new Intent(UpdateDel.this, MainActivity.class);
+                    Intent intent1 = new Intent(Update2.this, MainActivity2.class);
                     startActivity(intent1);
                     finish();
                 }
@@ -55,13 +54,13 @@ public class UpdateDel extends AppCompatActivity {
         activityUpdateDelBinding.backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              onBackPressed();
+                onBackPressed();
             }
         });
     }
 
     public void StatusBar() {
-        Window window = UpdateDel.this.getWindow();
+        Window window = Update2.this.getWindow();
         View decorView = window.getDecorView();
         int nightMode = AppCompatDelegate.getDefaultNightMode();
         if (nightMode == AppCompatDelegate.MODE_NIGHT_NO) {
@@ -78,6 +77,5 @@ public class UpdateDel extends AppCompatActivity {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(statusBarColor);
         }
-
     }
 }

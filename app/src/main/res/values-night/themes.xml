@@ -25,15 +25,21 @@
         <item name="android:background">@color/black</item>
     </style>
 
-    <style name="Backgrd">
+    <style name="parent_linear_layout">
         <item name="android:background">@color/black</item>
     </style>
 
-    <style name="iconbg">
+    <style name="icon_background">
         <item name="android:tint">@color/white</item>
     </style>
 
-    <style name="searchbg">
+    <style name="search_background">
+
+        <item name="android:background">@drawable/bgsearch</item>
+    </style>
+
+    <style name="text_search">
+        <item name="android:textColor">@color/white</item>
         <item name="android:background">@drawable/bgsearch</item>
     </style>
 
@@ -49,11 +55,15 @@
         <item name="android:textColor">#ffffff</item>
     </style>
 
-    <style name="reversBackground">
-        <item name="android:background">@color/white</item>
+    <style name="switch3">
+        <item name="colorSwitchThumbNormal">#ffffff</item>
     </style>
 
-    <style name="reversText">
-        <item name="android:textColor">@color/black</item>
+    <style name="background_drawable">
+        <item name="android:background">@drawable/item_background_night</item>
+    </style>
+
+    <style name="item2_text">
+        <item name="android:textColor">#ffffff</item>
     </style>
 </resources>

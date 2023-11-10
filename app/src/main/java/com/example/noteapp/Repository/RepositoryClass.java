@@ -5,29 +5,29 @@ import android.app.Application;
 import androidx.lifecycle.LiveData;
 
 import com.example.noteapp.ModelClass.RoomModel;
-import com.example.noteapp.RoomDAta.DBHelper;
+import com.example.noteapp.RoomDAta.DataBaseHelper;
 
 import java.util.List;
 
 public class RepositoryClass {
-    private DBHelper dbHelper;
+    private DataBaseHelper dataBaseHelper;
     LiveData<List<RoomModel>> getAllData;
 
     public RepositoryClass(Application application) {
-        dbHelper = DBHelper.getDatabase(application);
-        getAllData = dbHelper.getDAO().getallData();
+        dataBaseHelper = DataBaseHelper.getDatabase(application);
+        getAllData = dataBaseHelper.getDaoData().getallData();
     }
 
     public void insert(RoomModel roomModel) {
-        dbHelper.getDAO().addText(roomModel);
+        dataBaseHelper.getDaoData().addText(roomModel);
     }
 
     public void delete(RoomModel roomModel) {
-        dbHelper.getDAO().deleteText(roomModel);
+        dataBaseHelper.getDaoData().deleteText(roomModel);
     }
 
     public void updateData(RoomModel roomModel) {
-        dbHelper.getDAO().updateText(roomModel);
+        dataBaseHelper.getDaoData().updateText(roomModel);
     }
 
     public LiveData<List<RoomModel>> getGetAllData() {
@@ -37,7 +37,7 @@ public class RepositoryClass {
 //    static class InsertAsynTask extends AsyncTask<List<RoomModel>, Void, Void> {
 //        private DataDAO dataDAO;
 //
-//        public InsertAsynTask(DBHelper dbHelper) {
+//        public InsertAsynTask(DataBaseHelper dbHelper) {
 //            dataDAO = dbHelper.getDAO();
 //        }
 //

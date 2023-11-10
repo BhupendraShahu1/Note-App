@@ -14,23 +14,22 @@ import androidx.databinding.DataBindingUtil;
 
 import com.example.noteapp.ModelClass.RoomModel;
 import com.example.noteapp.ViewModel.ViewModelClass;
-import com.example.noteapp.databinding.ActivityAddDataBinding;
+import com.example.noteapp.databinding.ActivityAddSecondBinding;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class AddData extends AppCompatActivity {
+public class AddSecondActivity extends AppCompatActivity {
     Date currentTime;
-    ActivityAddDataBinding activityAddDataBinding;
+    ActivityAddSecondBinding activityAddDataBinding;
     ViewModelClass viewModelClass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        activityAddDataBinding = DataBindingUtil.setContentView(AddData.this, R.layout.activity_add_data);
+        activityAddDataBinding = DataBindingUtil.setContentView(AddSecondActivity.this, R.layout.activity_add_second);
         currentTime = Calendar.getInstance().getTime();
         StatusBar();
         activityAddDataBinding.saveData.setOnClickListener(new View.OnClickListener() {
@@ -39,14 +38,14 @@ public class AddData extends AppCompatActivity {
                 String tittle = activityAddDataBinding.editTittle.getText().toString();
                 String content = activityAddDataBinding.editContent.getText().toString();
                 if (tittle.isEmpty()) {
-                    Toast.makeText(AddData.this, "Tittle is empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddSecondActivity.this, "Tittle is empty", Toast.LENGTH_SHORT).show();
                 } else if (content.isEmpty()) {
-                    Toast.makeText(AddData.this, "Content is empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddSecondActivity.this, "Content is empty", Toast.LENGTH_SHORT).show();
                 } else {
                     String currTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
                     viewModelClass = new ViewModelClass(getApplication());
                     viewModelClass.insert(new RoomModel(tittle, content, currTime));
-                    Intent intent = new Intent(AddData.this, MainActivity.class);
+                    Intent intent = new Intent(AddSecondActivity.this, MainActivity2.class);
                     startActivity(intent);
                     finish();
                 }
@@ -60,14 +59,14 @@ public class AddData extends AppCompatActivity {
                 String tittleTrim = tittle.trim();
                 String content = activityAddDataBinding.editContent.getText().toString();
                 if (tittle.isEmpty()) {
-                    Toast.makeText(AddData.this, "Tittle is empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddSecondActivity.this, "Tittle is empty", Toast.LENGTH_SHORT).show();
                 } else if (content.isEmpty()) {
-                    Toast.makeText(AddData.this, "Content is empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddSecondActivity.this, "Content is empty", Toast.LENGTH_SHORT).show();
                 } else {
                     String currTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
                     viewModelClass = new ViewModelClass(getApplication());
                     viewModelClass.insert(new RoomModel(tittleTrim, content, currTime));
-                    Intent intent = new Intent(AddData.this, MainActivity.class);
+                    Intent intent = new Intent(AddSecondActivity.this, MainActivity2.class);
                     startActivity(intent);
                     finish();
                 }
@@ -77,7 +76,9 @@ public class AddData extends AppCompatActivity {
         activityAddDataBinding.back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                Intent intent = new Intent(AddSecondActivity.this, MainActivity2.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
@@ -85,13 +86,13 @@ public class AddData extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(AddData.this, MainActivity.class);
+        Intent intent = new Intent(AddSecondActivity.this, MainActivity2.class);
         startActivity(intent);
         finish();
     }
 
     public void StatusBar() {
-        Window window = AddData.this.getWindow();
+        Window window = AddSecondActivity.this.getWindow();
         View decorView = window.getDecorView();
         int nightMode = AppCompatDelegate.getDefaultNightMode();
         if (nightMode == AppCompatDelegate.MODE_NIGHT_NO) {
