@@ -14,6 +14,11 @@ Change languge and theam ,
 ![Delete Box](https://github.com/BhupendraShahu1/Note-App/assets/149964984/13675392-94e9-4a37-baf4-9bbd948093fb)
 ![Upadte Screen in hindi](https://github.com/BhupendraShahu1/Note-App/assets/149964984/416674d3-dbad-4b73-96dd-7481dd669e9f)
 ![Delete Box](https://github.com/BhupendraShahu1/Note-App/assets/149964984/fe2ca756-507f-48fa-af4c-8bb3745054ad)
+![SecandUI](https://github.com/BhupendraShahu1/Note-App/assets/149964984/2cd579d4-eab8-4187-931a-7f99fb1701ce)
+![SecandUIDarkMode](https://github.com/BhupendraShahu1/Note-App/assets/149964984/bf47c4d1-5d72-4f16-9159-c5e23a94be0a)
+
+
+
 
 
 
