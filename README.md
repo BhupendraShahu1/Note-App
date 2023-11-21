@@ -1,12 +1,12 @@
 # Note-App
 # Feature 
-Note App are Based on CURD Oprations,
-Easey to use,
-Add Notes ,
-Delete Notes,
-Update Notes,
-Change UI,
-Change languge and theam ,
+- Note App are Based on CURD Oprations
+- Easey to use
+- Add Notes 
+- Delete Notes
+- Update Notes
+- Change UI
+- Change languge and theam 
 # Priview
 ![Splash Screen](https://github.com/BhupendraShahu1/Note-App/assets/149964984/7062688e-5169-451f-a901-9daa5d54b99c)
 ![Home Screen](https://github.com/BhupendraShahu1/Note-App/assets/149964984/3651cee7-7ba2-41ef-a1b0-21b5b3602c1b)
