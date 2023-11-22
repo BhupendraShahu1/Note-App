@@ -14,6 +14,46 @@
 - ### Android SDK
 - ### Java
 - ### xml
+## Getting Started
+
+### Prerequisites
+
+Before you begin, ensure you have the following tools installed:
+
+- [Android Studio](https://developer.android.com/studio)
+- [Android SDK](https://developer.android.com/studio#downloads)
+- [Java](https://docs.oracle.com/javase/tutorial/getStarted/index.html)
+
+### Clone the Repository
+
+1. Open a terminal window.
+
+2. Clone the repository using the following command:
+
+    ```bash
+    git clone https://github.com/BhupendraShahu1/Note-App.git
+    ```
+
+### Open in Android Studio
+
+1. Launch Android Studio.
+
+2. Click on "Open an existing Android Studio project."
+
+3. Navigate to the directory where you cloned the repository and select the project.
+
+### Run the App
+
+1. Connect your Android device or use an emulator.
+
+2. Click on the "Run" button in Android Studio to install and launch the app on your device.
+
+### Explore the App
+
+- Open the app and explore the intuitive user interface.
+- Create new notes, edit existing ones, and delete notes as needed.
+- Experience the seamless integration of Room Database for efficient data storage.
+
 # Priview
 ![Splash Screen](https://github.com/BhupendraShahu1/Note-App/assets/149964984/7062688e-5169-451f-a901-9daa5d54b99c)
 ![Home Screen](https://github.com/BhupendraShahu1/Note-App/assets/149964984/3651cee7-7ba2-41ef-a1b0-21b5b3602c1b)
