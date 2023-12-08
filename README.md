@@ -55,14 +55,18 @@ Before you begin, ensure you have the following tools installed:
 - Experience the seamless integration of Room Database for efficient data storage.
 
 # Priview
-![Splash Screen](https://github.com/BhupendraShahu1/Note-App/assets/149964984/7062688e-5169-451f-a901-9daa5d54b99c)
-![Home Screen](https://github.com/BhupendraShahu1/Note-App/assets/149964984/3651cee7-7ba2-41ef-a1b0-21b5b3602c1b)
-![Dark Mode](https://github.com/BhupendraShahu1/Note-App/assets/149964984/f30b28c8-8943-46b6-b78e-b13a75850da4)
-![Delete Box](https://github.com/BhupendraShahu1/Note-App/assets/149964984/13675392-94e9-4a37-baf4-9bbd948093fb)
-![Upadte Screen in hindi](https://github.com/BhupendraShahu1/Note-App/assets/149964984/416674d3-dbad-4b73-96dd-7481dd669e9f)
-![Delete Box](https://github.com/BhupendraShahu1/Note-App/assets/149964984/fe2ca756-507f-48fa-af4c-8bb3745054ad)
-![SecandUI](https://github.com/BhupendraShahu1/Note-App/assets/149964984/2cd579d4-eab8-4187-931a-7f99fb1701ce)
-![SecandUIDarkMode](https://github.com/BhupendraShahu1/Note-App/assets/149964984/bf47c4d1-5d72-4f16-9159-c5e23a94be0a)
+<img src="https://github.com/BhupendraShahu1/Note-App/assets/149964984/7062688e-5169-451f-a901-9daa5d54b99c.jpg" alt="Splash Screen" width="200" hight="300"/>
+<img src="https://github.com/BhupendraShahu1/Note-App/assets/149964984/3651cee7-7ba2-41ef-a1b0-21b5b3602c1b.jPg" width="200" hight="300"/>
+
+<img src="https://github.com/BhupendraShahu1/Note-App/assets/149964984/f30b28c8-8943-46b6-b78e-b13a75850da4.jpg" alt="Splash Screen" width="200" hight="300"/>
+<img src="https://github.com/BhupendraShahu1/Note-App/assets/149964984/13675392-94e9-4a37-baf4-9bbd948093fb.jPg" width="200" hight="300"/>
+
+<img src="https://github.com/BhupendraShahu1/Note-App/assets/149964984/416674d3-dbad-4b73-96dd-7481dd669e9f.jpg" alt="Splash Screen" width="200" hight="300"/>
+
+<img src="https://github.com/BhupendraShahu1/Note-App/assets/149964984/fe2ca756-507f-48fa-af4c-8bb3745054ad.jPg" width="200" hight="300"/>
+<img src="https://github.com/BhupendraShahu1/Note-App/assets/149964984/2cd579d4-eab8-4187-931a-7f99fb1701ce.jPg" width="200" hight="300"/>
+<img src="https://github.com/BhupendraShahu1/Note-App/assets/149964984/bf47c4d1-5d72-4f16-9159-c5e23a94be0a.jPg" width="200" hight="300"/>
+
 
 
 
